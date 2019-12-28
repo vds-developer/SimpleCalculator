@@ -1,19 +1,19 @@
 package uottawa.simplecalculator;
 
 import android.app.Activity;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.*;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+//import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends Activity {
 
 
-    private enum Operator{none,add,minus,multiply,divide}
     Boolean reset = false;
     Boolean error = false;
     Operator operator = Operator.none;
-    private double data1=0,data2=0;
     TextView result;
     Button btn00;
     Button btn01;
@@ -31,9 +31,7 @@ public class MainActivity extends Activity {
     Button btnMultiply;
     Button btnClear;
     Button btnResult;
-
-
-
+    private double data1 = 0, data2 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,123 +58,130 @@ public class MainActivity extends Activity {
         btnResult = (Button) findViewById(R.id.btnAdd);
     }
 
-
-
-    public void btn00CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"0");
+    public void btn00CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "0");
         }
 
     }
 
-    public void btn01CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"1");
+    public void btn01CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "1");
         }
 
     }
+
     public void btn02CLick(View view) {
-        if (!error&&!reset) {
+        if (!error && !reset) {
             if (result.getText().toString().equals("0")) result.setText("");
             result.setText(result.getText() + "2");
         }
     }
+
     public void btn03CLick(View view) {
-        if (!error&&!reset) {
+        if (!error && !reset) {
             if (result.getText().toString().equals("0")) result.setText("");
             result.setText(result.getText() + "3");
         }
     }
+
     public void btn04CLick(View view) {
-        if (!error&&!reset) {
+        if (!error && !reset) {
             if (result.getText().toString().equals("0")) result.setText("");
             result.setText(result.getText() + "4");
         }
     }
-    public void btn05CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"5");
-        }
-    }
-    public void btn06CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"6");
-        }
-    }
-    public void btn07CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"7");
-        }
-    }
-    public void btn08CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"8");
-        }
-    }
-    public void btn09CLick(View view){
-        if(!error&&!reset){
-            if(result.getText().toString().equals("0"))result.setText("");
-            result.setText(result.getText()+"9");
+
+    public void btn05CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "5");
         }
     }
 
+    public void btn06CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "6");
+        }
+    }
 
+    public void btn07CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "7");
+        }
+    }
 
-    public void btnAddCLick(View view){
-        if(!error&&Character.isDigit(result.getText().toString().charAt(result.length()-1))) {
-            if(operator != Operator.none){
+    public void btn08CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "8");
+        }
+    }
+
+    public void btn09CLick(View view) {
+        if (!error && !reset) {
+            if (result.getText().toString().equals("0")) result.setText("");
+            result.setText(result.getText() + "9");
+        }
+    }
+
+    public void btnAddCLick(View view) {
+        if (!error && Character.isDigit(result.getText().toString().charAt(result.length() - 1))) {
+            if (operator != Operator.none) {
                 this.btnResultCLick(view);
             }
             operator = Operator.add;
             data1 = Double.parseDouble(result.getText().toString());
-            result.setText(result.getText()+ "+");
+            result.setText(result.getText() + "+");
             reset = false;
         }
 
     }
-    public void btnMinusCLick(View view){
-        if(!error&&Character.isDigit(result.getText().toString().charAt(result.length()-1)) ) {
-            if(operator != Operator.none){
+
+    public void btnMinusCLick(View view) {
+        if (!error && Character.isDigit(result.getText().toString().charAt(result.length() - 1))) {
+            if (operator != Operator.none) {
                 this.btnResultCLick(view);
             }
             operator = Operator.minus;
             data1 = Double.parseDouble(result.getText().toString());
-            result.setText(result.getText()+ "-");
+            result.setText(result.getText() + "-");
             reset = false;
 
         }
     }
-    public void btnMultiplyCLick(View view){
-        if(!error&&Character.isDigit(result.getText().toString().charAt(result.length()-1))) {
-            if(operator != Operator.none){
+
+    public void btnMultiplyCLick(View view) {
+        if (!error && Character.isDigit(result.getText().toString().charAt(result.length() - 1))) {
+            if (operator != Operator.none) {
                 this.btnResultCLick(view);
             }
             data1 = Double.parseDouble(result.getText().toString());
-            result.setText(result.getText()+ "*");
+            result.setText(result.getText() + "*");
             operator = Operator.multiply;
             reset = false;
 
         }
     }
 
-    public void btnDivideCLick(View view){
-        if(!error&&!result.getText().toString().equals("0")&&Character.isDigit(result.getText().toString().charAt(result.length()-1))) {
-            if(operator != Operator.none){
+    public void btnDivideCLick(View view) {
+        if (!error && !result.getText().toString().equals("0") && Character.isDigit(result.getText().toString().charAt(result.length() - 1))) {
+            if (operator != Operator.none) {
                 this.btnResultCLick(view);
             }
             data1 = Double.parseDouble(result.getText().toString());
-            result.setText(result.getText()+ "/");
+            result.setText(result.getText() + "/");
             operator = Operator.divide;
             reset = false;
 
         }
     }
+
     public void btnClearCLick(View view) {
         result.setText("0");
         operator = Operator.none;
@@ -185,18 +190,19 @@ public class MainActivity extends Activity {
         reset = false;
 
     }
+
     public void btnDotCLick(View view) {
-        if(!error) {
+        if (!error) {
             String parseString = result.getText().toString();
-            if(operator!=Operator.none){
-                if(operator == Operator.add){
-                    parseString = parseString.substring(parseString.indexOf("+")+1);
-                } else if(operator == Operator.minus){
-                    parseString = parseString.substring(parseString.indexOf("-")+1);
-                } else if(operator == Operator.multiply){
-                    parseString = parseString.substring(parseString.indexOf("*")+1);
+            if (operator != Operator.none) {
+                if (operator == Operator.add) {
+                    parseString = parseString.substring(parseString.indexOf("+") + 1);
+                } else if (operator == Operator.minus) {
+                    parseString = parseString.substring(parseString.indexOf("-") + 1);
+                } else if (operator == Operator.multiply) {
+                    parseString = parseString.substring(parseString.indexOf("*") + 1);
                 } else { // divide
-                    parseString = parseString.substring(parseString.indexOf("/")+1);
+                    parseString = parseString.substring(parseString.indexOf("/") + 1);
                 }
             }
             if (!parseString.contains(".")) {
@@ -208,24 +214,25 @@ public class MainActivity extends Activity {
         }
 
     }
+
     public void btnResultCLick(View view) {
-        if(operator!=Operator.none){
+        if (operator != Operator.none) {
             double endResult = 0;
             String text = result.getText().toString();
-            if(operator == Operator.add){
-                data2 = Double.parseDouble(text.substring(text.indexOf("+")+1));
+            if (operator == Operator.add) {
+                data2 = Double.parseDouble(text.substring(text.indexOf("+") + 1));
                 endResult = data1 + data2;
-            } else if(operator == Operator.minus){
-                data2 = Double.parseDouble(text.substring(text.indexOf("-")+1));
+            } else if (operator == Operator.minus) {
+                data2 = Double.parseDouble(text.substring(text.indexOf("-") + 1));
                 endResult = data1 - data2;
-            } else if(operator == Operator.multiply){
-                data2 = Double.parseDouble(text.substring(text.indexOf("*")+1));
+            } else if (operator == Operator.multiply) {
+                data2 = Double.parseDouble(text.substring(text.indexOf("*") + 1));
                 endResult = data1 * data2;
-            } else{ // divide
-                data2 = Double.parseDouble(text.substring(text.indexOf("/")+1));
-                if(data2 != 0){
+            } else { // divide
+                data2 = Double.parseDouble(text.substring(text.indexOf("/") + 1));
+                if (data2 != 0) {
                     endResult = data1 / data2;
-                }else{
+                } else {
                     result.setText("Error");
                     error = true;
                 }
@@ -239,5 +246,6 @@ public class MainActivity extends Activity {
 
     }
 
+    private enum Operator {none, add, minus, multiply, divide}
 
 }
